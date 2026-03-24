@@ -1,0 +1,771 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026加班费计算器_劳动法标准_工作日周末节假日加班工资在线计算 - 智汇工薪助手</title>
+    <meta name="description" content="2026最新劳动法标准加班费计算器，支持工作日、周末、法定节假日加班工资一键核算，精准计算加班应得工资，工薪族必备免费工具。">
+    <meta name="keywords" content="加班费计算器,2026劳动法加班费标准,工作日加班费,周末加班工资,法定节假日加班费,加班工资在线计算">
+    <meta name="author" content="智汇工薪助手">
+    <!-- 【修复】canonical链接 -->
+    <link rel="canonical" href="https://lixijsq.com/tools/overtime-pay-calculator/index.html">
+    <meta property="og:site_name" content="智汇工薪助手">
+    <meta property="og:title" content="2026加班费计算器_劳动法标准_工作日周末节假日加班工资在线计算">
+    <meta property="og:description" content="2026最新劳动法标准加班费计算器，支持工作日、周末、法定节假日加班工资一键核算，精准计算加班应得工资，工薪族必备免费工具。">
+    <meta property="og:type" content="website">
+    <!-- 【修复】OG URL -->
+    <meta property="og:url" content="https://lixijsq.com/tools/overtime-pay-calculator/index.html">
+    <meta property="og:image" content="https://lixijsq.com/images/home-og-cover.jpg">
+    <meta property="og:locale" content="zh_CN">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <meta name="application-name" content="智汇工薪助手">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- 【修复】CSS路径 -->
+    <link rel="stylesheet" href="/css/global.css">
+    <style>
+        /* 页面内嵌样式（保持不变） */
+        .back-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: var(--space-2) var(--space-2);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+            position: relative;
+            line-height: 1.3;
+        }
+        .back-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: all var(--transition-fast);
+            transform: translateX(-50%);
+        }
+        .back-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .back-link:hover::after {
+            width: 60%;
+        }
+        .quick-calc-group {
+            margin-bottom: var(--space-5);
+            padding: var(--space-4);
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+        }
+        .quick-calc-title {
+            font-weight: 600;
+            color: var(--text-title);
+            margin-bottom: var(--space-3);
+            font-size: 0.95rem;
+        }
+        .quick-calc-btns {
+            display: flex;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+        }
+        .quick-calc-btn {
+            padding: var(--space-2) var(--space-4);
+            border: 1px solid var(--primary);
+            background: #fff;
+            color: var(--primary);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .quick-calc-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+        .input-row {
+            display: flex;
+            gap: var(--space-6);
+            margin-bottom: var(--space-5);
+            flex-wrap: wrap;
+        }
+        .input-group {
+            flex: 1;
+            min-width: 260px;
+        }
+        label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: 500;
+            color: var(--text-title);
+            font-size: 1rem;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        .type-tip {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-1);
+        }
+        .overtime-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-5) 0;
+        }
+        .overtime-type-card {
+            padding: var(--space-4);
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .overtime-type-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-2);
+            font-size: 1.05rem;
+        }
+        .result {
+            padding: var(--space-4);
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            line-height: 2;
+            margin-top: var(--space-4);
+            border-left: 4px solid var(--primary);
+            display: none;
+        }
+        .result-detail {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            margin-bottom: var(--space-5);
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-2) 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .result-item.total {
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-bottom: none;
+            margin-top: var(--space-2);
+            padding-top: var(--space-3);
+            border-top: 2px solid var(--border-light);
+            color: var(--primary);
+        }
+        .reference-table-wrap {
+            overflow-x: auto;
+            margin: var(--space-4) 0;
+        }
+        .reference-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        .reference-table thead tr {
+            background: var(--primary-light);
+        }
+        .reference-table th, .reference-table td {
+            padding: 12px 10px;
+            border: 1px solid var(--border-light);
+        }
+        .reference-table th {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        @media (max-width: 1024px) {
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            .input-row {
+                gap: var(--space-4);
+            }
+            .quick-calc-btns {
+                gap: var(--space-2);
+            }
+            .quick-calc-btn {
+                padding: var(--space-2) var(--space-3);
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "2026加班费计算器",
+      "applicationCategory": "CalculatorApplication",
+      "operatingSystem": "Web",
+      "description": "2026最新劳动法标准开发的加班费计算器，支持工作日、周末、法定节假日加班工资一键核算，精准计算加班应得工资，支持一键复制结果、保存PDF。",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "智汇工薪助手"
+      },
+      "featureList": [
+        "支持月工资/日薪/时薪三种计算方式",
+        "工作日1.5倍/周末2倍/法定节假日3倍加班费标准",
+        "加班工资精准核算",
+        "完整加班明细单展示",
+        "一键复制结果、打印明细、保存PDF"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "加班费计算使用教程",
+      "description": "教你如何使用加班费计算器，按照劳动法标准精准算出加班应得工资",
+      "totalTime": "PT1M",
+      "steps": [
+        {
+          "@type": "HowToStep",
+          "name": "输入月工资金额",
+          "text": "在对应输入框中填写你的税前月基本工资，也可点击快速计算按钮一键填充常用薪资",
+          "url": "#step1"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "填写计薪天数",
+          "text": "填写月计薪天数，默认按国家法定21.75天计薪标准填写，可根据公司实际规则修改",
+          "url": "#step2"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "填写各类型加班时长",
+          "text": "分别填写工作日、周末、法定节假日的加班时长，系统自动按对应倍数核算加班费",
+          "url": "#step3"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "查看实时计算结果",
+          "text": "系统将自动按照劳动法标准，实时计算出总加班费、日均工资、时均工资等完整明细",
+          "url": "#step4"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "导出计算结果",
+          "text": "查看完整加班工资明细单，可一键复制结果、打印明细单或保存为PDF文件",
+          "url": "#step5"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "2026年劳动法加班费标准是多少？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "根据《中华人民共和国劳动法》规定，加班费标准为：工作日延长工作时间的，支付不低于工资的150%的工资报酬；休息日安排工作又不能安排补休的，支付不低于工资的200%的工资报酬；法定休假日安排工作的，支付不低于工资的300%的工资报酬。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "月计薪天数21.75天是怎么来的？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "月计薪天数21.75天是国家法定标准，计算公式为：(365天-104天休息日)÷12个月=21.75天，该天数剔除了全年休息日，是计算日薪、时薪的法定标准。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "周末加班可以用调休代替加班费吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以。休息日安排劳动者加班，用人单位可以优先安排补休，无法安排补休的，需支付不低于工资200%的加班费；但工作日延长加班和法定节假日加班，不得以调休代替加班费，必须足额支付加班工资。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "法定节假日加班，除了3倍加班费，还需要额外支付原工资吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不需要。法定节假日属于带薪休假，员工即使不上班也享有正常的日工资；法定节假日加班支付的3倍加班费，是额外的加班报酬，不包含原本的带薪日工资，无需再额外支付原工资。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "加班费的计算基数是按基本工资还是全额工资？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "加班费的计算基数，以劳动合同约定的正常工作时间的工资为准，包含固定发放的岗位工资、绩效工资等固定收入，不得仅以最低工资标准作为计算基数；若劳动合同未约定，按劳动者正常出勤的月平均工资作为计算基数。"
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- 【修复】导航栏全部使用绝对路径 -->
+    <nav role="navigation" aria-label="主导航">
+        <div class="nav-container">
+            <a href="/" class="logo" title="智汇工薪助手首页">
+                <svg class="icon icon-white" viewBox="0 0 24 24">
+                    <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+                </svg>
+                智汇工薪助手
+            </a>
+            <div class="nav-toggle-wrapper">
+                <button class="nav-toggle-btn" id="navToggleBtn" aria-label="所有工具" aria-expanded="false" aria-controls="navMenu">
+                    <span>所有工具</span>
+                    <svg class="icon" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                </button>
+                <div class="nav-menu" id="navMenu" aria-hidden="true">
+                    <a href="/tools/after-tax-salary-calculator/index.html" class="nav-link">税后工资计算器</a>
+                    <a href="/tools/overtime-pay-calculator/index.html" class="nav-link">加班费计算器</a>
+                    <a href="/tools/leave-deduction-calculator/index.html" class="nav-link">请假扣款计算器</a>
+                    <a href="/tools/year-end-bonus-tax-calculator/index.html" class="nav-link">年终奖个税计算器</a>
+                    <a href="/tools/severance-pay-calculator/index.html" class="nav-link">离职赔偿金计算器</a>
+                    <a href="/tools/retirement-delay-calculator/index.html" class="nav-link">延迟退休测算器</a>
+                    <a href="/tools/chinese-amount-converter/index.html" class="nav-link">金额大写转换器</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <h1>2026加班费计算器（劳动法标准）</h1>
+        <div class="card" id="step1">
+            <div class="quick-calc-group">
+                <div class="quick-calc-title">📌 常用薪资快速计算（点击一键填充）</div>
+                <div class="quick-calc-btns">
+                    <button class="quick-calc-btn" onclick="quickFill(5000)">5000元</button>
+                    <button class="quick-calc-btn" onclick="quickFill(8000)">8000元</button>
+                    <button class="quick-calc-btn" onclick="quickFill(10000)">10000元</button>
+                    <button class="quick-calc-btn" onclick="quickFill(12000)">12000元</button>
+                    <button class="quick-calc-btn" onclick="quickFill(15000)">15000元</button>
+                    <button class="quick-calc-btn" onclick="quickFill(20000)">20000元</button>
+                </div>
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label>税前月基本工资（元）</label>
+                    <input type="number" id="monthSalary" value="10000" min="0" placeholder="请输入月基本工资" oninput="calcOvertime()">
+                </div>
+                <div class="input-group" id="step2">
+                    <label>月计薪天数</label>
+                    <input type="number" id="workDays" value="21.75" min="0" step="0.01" placeholder="请输入计薪天数" oninput="calcOvertime()">
+                    <div class="type-tip">国家法定标准为21.75天，可按公司实际规则修改</div>
+                </div>
+            </div>
+            <h3 id="step3">加班时长填写（小时）</h3>
+            <div class="overtime-type-grid">
+                <div class="overtime-type-card">
+                    <h4>工作日加班（1.5倍）</h4>
+                    <input type="number" id="workdayOvertime" value="10" min="0" step="0.5" placeholder="加班时长" oninput="calcOvertime()">
+                    <div class="type-tip">工作日8小时外的加班时长</div>
+                </div>
+                <div class="overtime-type-card">
+                    <h4>周末加班（2倍）</h4>
+                    <input type="number" id="weekendOvertime" value="8" min="0" step="0.5" placeholder="加班时长" oninput="calcOvertime()">
+                    <div class="type-tip">周六周日休息日加班时长</div>
+                </div>
+                <div class="overtime-type-card">
+                    <h4>法定节假日加班（3倍）</h4>
+                    <input type="number" id="holidayOvertime" value="0" min="0" step="0.5" placeholder="加班时长" oninput="calcOvertime()">
+                    <div class="type-tip">春节、国庆等法定节假日加班时长</div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group" id="step4">
+            <button onclick="calcOvertime()">计算加班费</button>
+            <button class="btn-success" onclick="copyResult()">一键复制结果</button>
+            <button class="btn-accent" onclick="sharePage()">📤 一键分享</button>
+        </div>
+        <div id="res" class="result" id="step5"></div>
+        <section class="tools-nav">
+            <h2>📌 相关攻略推荐</h2>
+            <div class="tools-grid">
+                <!-- 【修复】工具卡片data-href和内部链接 -->
+                <article class="tool-card" data-href="/tools/overtime-pay-calculator/2026-qingmingjie-fangjia-jiaban-gongzi-suanfa.html" tabindex="0" role="link">
+                    <h3>2026清明节放假安排及加班费计算</h3>
+                    <p>2026年清明节放假3天不调休，法定节假日加班工资怎么算？3倍工资是哪几天？一文讲清</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/overtime-pay-calculator/2026-qingmingjie-fangjia-jiaban-gongzi-suanfa.html" class="tool-inner-link" onclick="event.stopPropagation();">查看完整攻略 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/overtime-pay-calculator/jiabanfei-jisuan-xiangjie.html" tabindex="0" role="link">
+                    <h3>法定节假日加班费标准</h3>
+                    <p>2026年全年法定节假日放假安排及加班费计算标准，一文搞懂3倍工资核算规则</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/overtime-pay-calculator/jiabanfei-jisuan-xiangjie.html" class="tool-inner-link" onclick="event.stopPropagation();">查看完整标准 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/overtime-pay-calculator/article-overtime-2.html" tabindex="0" role="link">
+                    <h3>加班维权全指南</h3>
+                    <p>公司要求"调休"代替加班费?2026年法律红线全解析</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/overtime-pay-calculator/article-overtime-2.html" class="tool-inner-link" onclick="event.stopPropagation();">查看维权指南 →</a>
+                    </div>
+                </article>
+                 <article class="tool-card" data-href="/tools/overtime-pay-calculator/article-overtime-1.html" tabindex="0" role="link">
+                    <h3>法定节假日三倍工资如何拿到手</h3>
+                    <p>法定节假日三倍工资如何拿到手，今天给你详解</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/overtime-pay-calculator/article-overtime-1.html" class="tool-inner-link" onclick="event.stopPropagation();">查看详解 →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <div class="card" id="printArea">
+            <h2>📋 加班工资明细单</h2>
+            <div class="result-detail">
+                <div class="result-item">
+                    <span>月基本工资</span>
+                    <strong id="printSalary">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>月计薪天数</span>
+                    <strong id="printDays">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>日均工资</span>
+                    <strong id="printDaySalary">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>时均工资</span>
+                    <strong id="printHourSalary">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>工作日加班费</span>
+                    <strong id="printWorkdayFee">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>周末加班费</span>
+                    <strong id="printWeekendFee">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>法定节假日加班费</span>
+                    <strong id="printHolidayFee">-</strong>
+                </div>
+                <div class="result-item total">
+                    <span>总加班费</span>
+                    <strong id="printTotalFee">-</strong>
+                </div>
+            </div>
+            <div class="tax-note">
+                <strong>📌 规则说明：</strong>本明细单依据《中华人民共和国劳动法》2026年现行标准编制，日均工资=月基本工资÷月计薪天数，时均工资=日均工资÷8小时；工作日加班费按1.5倍、周末按2倍、法定节假日按3倍标准核算，计算结果可作为加班工资核对、维权的参考依据。
+            </div>
+            <div class="btn-group">
+                <button class="btn-print" onclick="printDetail()">🖨️ 打印明细单</button>
+                <button class="btn-accent" onclick="printDetail()">📄 保存为PDF</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2 class="about-title">📊 2026年法定节假日加班费参考表</h2>
+            <div class="reference-table-wrap">
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>节假日</th>
+                            <th>放假天数</th>
+                            <th>3倍工资天数</th>
+                            <th>2倍工资天数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>元旦</td><td>3天</td><td>1天</td><td>2天</td></tr>
+                        <tr><td>春节</td><td>8天</td><td>4天</td><td>4天</td></tr>
+                        <tr><td>清明节</td><td>3天</td><td>1天</td><td>2天</td></tr>
+                        <tr><td>劳动节</td><td>5天</td><td>1天</td><td>4天</td></tr>
+                        <tr><td>端午节</td><td>3天</td><td>1天</td><td>2天</td></tr>
+                        <tr><td>中秋节</td><td>3天</td><td>1天</td><td>2天</td></tr>
+                        <tr><td>国庆节</td><td>7天</td><td>3天</td><td>4天</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <section class="card">
+            <h2 class="about-title">计算器专属说明</h2>
+            <h3>一、政策介绍</h3>
+            <p>本加班费计算器严格依据《中华人民共和国劳动法》第四十四条及2026年现行劳动保障政策开发，完全贴合国家法定加班费核算标准。劳动法明确规定，用人单位安排劳动者延长工作时间的，需按对应倍数支付高于正常工作时间工资的劳动报酬，不得克扣或无故拖欠劳动者的加班工资。本计算器支持工作日、周末休息日、法定节假日三类加班场景的工资核算，所有计算规则完全符合劳动仲裁、法院裁判的通用核算标准，计算结果可作为工薪族核对工资、劳动维权的参考依据。</p>
+            <h3>二、计算方式</h3>
+            <p>核心计算公式严格遵循国家法定标准，具体为：日均工资=月基本工资÷月计薪天数（法定标准21.75天），时均工资=日均工资÷8小时；工作日加班费=时均工资×工作日加班时长×1.5倍，周末加班费=时均工资×周末加班时长×2倍，法定节假日加班费=时均工资×法定节假日加班时长×3倍；总加班费=工作日加班费+周末加班费+法定节假日加班费。本计算器自动完成所有倍数换算，精准核算每一类加班的应得报酬，无需手动计算。</p>
+        </section>
+        <section class="card">
+            <h2 class="about-title">计算器使用指南</h2>
+            <p>本计算器操作简单，无需注册登录，打开即可免费使用，全程仅需3步即可精准算出加班应得工资，具体操作步骤如下：</p>
+            <ol class="advantage-list">
+                <li><strong>填写基础薪资信息：</strong>在「税前月基本工资」输入框中，填写你的劳动合同约定的月固定工资，包含固定发放的岗位工资、绩效工资等固定收入，也可点击快速计算按钮，一键填充常用薪资；在「月计薪天数」输入框中，默认按国家法定21.75天填写，若你所在公司有明确约定的计薪天数，可根据实际情况修改。</li>
+                <li><strong>填写加班时长：</strong>根据你的实际加班情况，分别填写工作日、周末、法定节假日的加班时长，支持0.5小时为单位的小数填写，精准匹配实际打卡加班时长，填写后系统将自动按对应倍数核算加班费，无需手动切换计算规则。</li>
+                <li><strong>查看并导出结果：</strong>填写完成后，系统将自动实时计算出日均工资、时均工资、各类别加班费及总加班费，同时生成完整的加班工资明细单，支持一键复制结果、打印明细单或保存为PDF文件，方便你和公司发放的工资条核对，或作为劳动维权的参考凭证。</li>
+            </ol>
+            <p>若你需要核算请假扣款、病假工资，可使用本站的<a href="/tools/leave-deduction-calculator/index.html">请假扣款计算器</a>，精准核算请假应扣金额，避免工资被扣错。</p>
+        </section>
+        <section class="card">
+            <h2 class="about-title">常见问题解答</h2>
+            <div class="faq-item">
+                <h3>2026年劳动法加班费标准是多少？</h3>
+                <p>根据《中华人民共和国劳动法》规定，加班费标准为：工作日延长工作时间的，支付不低于工资的150%的工资报酬；休息日安排工作又不能安排补休的，支付不低于工资的200%的工资报酬；法定休假日安排工作的，支付不低于工资的300%的工资报酬。</p>
+            </div>
+            <div class="faq-item">
+                <h3>月计薪天数21.75天是怎么来的？</h3>
+                <p>月计薪天数21.75天是国家法定标准，计算公式为：(365天-104天休息日)÷12个月=21.75天，该天数剔除了全年休息日，是计算日薪、时薪的法定标准。</p>
+            </div>
+            <div class="faq-item">
+                <h3>周末加班可以用调休代替加班费吗？</h3>
+                <p>可以。休息日安排劳动者加班，用人单位可以优先安排补休，无法安排补休的，需支付不低于工资200%的加班费；但工作日延长加班和法定节假日加班，不得以调休代替加班费，必须足额支付加班工资。</p>
+            </div>
+            <div class="faq-item">
+                <h3>法定节假日加班，除了3倍加班费，还需要额外支付原工资吗？</h3>
+                <p>不需要。法定节假日属于带薪休假，员工即使不上班也享有正常的日工资；法定节假日加班支付的3倍加班费，是额外的加班报酬，不包含原本的带薪日工资，无需再额外支付原工资。</p>
+            </div>
+            <div class="faq-item">
+                <h3>加班费的计算基数是按基本工资还是全额工资？</h3>
+                <p>加班费的计算基数，以劳动合同约定的正常工作时间的工资为准，包含固定发放的岗位工资、绩效工资等固定收入，不得仅以最低工资标准作为计算基数；若劳动合同未约定，按劳动者正常出勤的月平均工资作为计算基数。</p>
+            </div>
+            <div class="faq-item">
+                <h3>公司不给加班费怎么办？</h3>
+                <p>若用人单位克扣或无故拖欠加班工资，你可以先与公司协商沟通，要求足额支付加班费；协商无果的，可向当地劳动监察大队投诉举报，或向劳动争议仲裁委员会申请劳动仲裁，要求公司支付加班费及赔偿金，仲裁时需提供劳动合同、加班打卡记录、工资条等相关证据。</p>
+            </div>
+        </section>
+        <section class="tools-nav">
+            <h2>🛠️ 更多实用工具</h2>
+            <div class="tools-grid">
+                <!-- 【修复】工具卡片data-href和内部链接 -->
+                <article class="tool-card" data-href="/tools/after-tax-salary-calculator/index.html" tabindex="0" role="link">
+                    <h3>税后工资计算器</h3>
+                    <p>2026最新个税规则，精准算出税后到手工资，附带完整个税明细</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/after-tax-salary-calculator/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/leave-deduction-calculator/index.html" tabindex="0" role="link">
+                    <h3>请假扣款计算器</h3>
+                    <p>事假/病假工资核算，符合医疗期标准，精准算出扣款金额</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/leave-deduction-calculator/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/year-end-bonus-tax-calculator/index.html" tabindex="0" role="link">
+                    <h3>年终奖个税对比计算器</h3>
+                    <p>单独计税/合并计税一键对比，自动算出最优省税方案</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/year-end-bonus-tax-calculator/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/severance-pay-calculator/index.html" tabindex="0" role="link">
+                    <h3>离职经济赔偿金计算器</h3>
+                    <p>N/N+1/2N补偿计算，自动核算个税免税额度，精准算到手金额</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/severance-pay-calculator/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/retirement-delay-calculator/index.html" tabindex="0" role="link">
+                    <h3>延迟退休计算器</h3>
+                    <p>2026渐进式延迟退休政策测算，精确到月预测退休时间</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/retirement-delay-calculator/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/chinese-amount-converter/index.html" tabindex="0" role="link">
+                    <h3>中文大写金额转换工具</h3>
+                    <p>符合财务、银行标准的中文大写金额转换，支持一键复制</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/chinese-amount-converter/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <!-- 【修复】页脚全部使用绝对路径 -->
+    <footer class="footer-links" role="contentinfo">
+        <nav aria-label="页脚导航">
+            <a href="/about.html">关于我们</a> |
+            <a href="/contact.html">联系反馈</a> |
+            <a href="/privacy.html">隐私政策</a> |
+            <a href="/disclaimer.html">免责声明</a>
+        </nav>
+        <p>© 2026 智汇工薪助手 版权所有 | 所有工具均严格遵循国家相关法律法规开发</p>
+    </footer>
+    <div id="cookiePopup" class="cookie-popup" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
+        <div class="cookie-content">
+            <h3 id="cookie-title">
+                <svg class="icon icon-primary" viewBox="0 0 24 24">
+                    <path d="M12 2a10 10 0 1 0 10 10A4 4 0 0 1 12 12V2Z"></path>
+                    <path d="M12 16h.01"></path>
+                    <path d="M8 12h.01"></path>
+                    <path d="M16 12h.01"></path>
+                    <path d="M12 8h.01"></path>
+                </svg>
+                Cookie 提示
+            </h3>
+            <p id="cookie-desc">我们使用Cookie来提升您的浏览体验和分析网站流量，相关数据仅用于优化网站功能。您可以选择接受或拒绝，详细内容请查看我们的<a href="/privacy.html">隐私政策</a>。</p>
+        </div>
+        <div class="cookie-buttons">
+            <button id="rejectCookies" class="btn btn-outline">拒绝</button>
+            <button id="acceptCookies" class="btn btn-primary">接受</button>
+        </div>
+    </div>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单展开收起逻辑
+            const navToggleBtn = document.getElementById('navToggleBtn');
+            const navMenu = document.getElementById('navMenu');
+            if (navToggleBtn && navMenu) {
+                navToggleBtn.addEventListener('click', function() {
+                    const isActive = navToggleBtn.classList.toggle('active');
+                    navMenu.classList.toggle('show');
+                    navToggleBtn.setAttribute('aria-expanded', isActive);
+                    navMenu.setAttribute('aria-hidden', !isActive);
+                });
+                const navLinks = navMenu.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navToggleBtn.classList.remove('active');
+                        navMenu.classList.remove('show');
+                        navToggleBtn.setAttribute('aria-expanded', 'false');
+                        navMenu.setAttribute('aria-hidden', 'true');
+                    });
+                });
+                document.addEventListener('click', (e) => {
+                    if (!navToggleBtn.contains(e.target) && !navMenu.contains(e.target)) {
+                        navToggleBtn.classList.remove('active');
+                        navMenu.classList.remove('show');
+                        navToggleBtn.setAttribute('aria-expanded', 'false');
+                        navMenu.setAttribute('aria-hidden', 'true');
+                    }
+                });
+            }
+
+            const toolCards = document.querySelectorAll('.tool-card');
+            toolCards.forEach(card => {
+                const href = card.getAttribute('data-href');
+                card.addEventListener('click', () => { if (href) window.location.href = href; });
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (href) window.location.href = href; }
+                });
+            });
+            const cookiePopup = document.getElementById('cookiePopup');
+            const acceptBtn = document.getElementById('acceptCookies');
+            const rejectBtn = document.getElementById('rejectCookies');
+            if (!localStorage.getItem('cookieConsent')) {
+                setTimeout(() => { cookiePopup.classList.add('show'); acceptBtn.focus(); }, 1500);
+            }
+            function hideCookiePopup(consent) {
+                localStorage.setItem('cookieConsent', consent);
+                cookiePopup.classList.remove('show');
+            }
+            acceptBtn.addEventListener('click', () => hideCookiePopup('accepted'));
+            rejectBtn.addEventListener('click', () => hideCookiePopup('rejected'));
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && cookiePopup.classList.contains('show')) hideCookiePopup('rejected');
+            });
+            calcOvertime();
+        });
+        function quickFill(salary) {
+            document.getElementById('monthSalary').value = salary;
+            calcOvertime();
+        }
+        function calcOvertime() {
+            const monthSalary = parseFloat(document.getElementById('monthSalary').value) || 0;
+            const workDays = parseFloat(document.getElementById('workDays').value) || 21.75;
+            const workdayOvertime = parseFloat(document.getElementById('workdayOvertime').value) || 0;
+            const weekendOvertime = parseFloat(document.getElementById('weekendOvertime').value) || 0;
+            const holidayOvertime = parseFloat(document.getElementById('holidayOvertime').value) || 0;
+            const res = document.getElementById('res');
+            const daySalary = workDays > 0 ? monthSalary / workDays : 0;
+            const hourSalary = daySalary / 8;
+            const workdayFee = hourSalary * workdayOvertime * 1.5;
+            const weekendFee = hourSalary * weekendOvertime * 2;
+            const holidayFee = hourSalary * holidayOvertime * 3;
+            const totalFee = workdayFee + weekendFee + holidayFee;
+            res.style.display = 'block';
+            res.innerHTML = `
+                📌 月基本工资：￥${monthSalary.toFixed(2)}<br>
+                📌 月计薪天数：${workDays.toFixed(2)}天<br>
+                📌 日均工资：￥${daySalary.toFixed(2)}<br>
+                📌 时均工资：￥${hourSalary.toFixed(2)}<br>
+                📌 工作日加班费（1.5倍）：￥${workdayFee.toFixed(2)}<br>
+                📌 周末加班费（2倍）：￥${weekendFee.toFixed(2)}<br>
+                📌 法定节假日加班费（3倍）：￥${holidayFee.toFixed(2)}<br>
+                📌 总加班费：<strong style="font-size:1.2rem; color:var(--primary);">￥${totalFee.toFixed(2)}</strong>
+            `;
+            document.getElementById('printSalary').innerText = `￥${monthSalary.toFixed(2)}`;
+            document.getElementById('printDays').innerText = `${workDays.toFixed(2)}天`;
+            document.getElementById('printDaySalary').innerText = `￥${daySalary.toFixed(2)}`;
+            document.getElementById('printHourSalary').innerText = `￥${hourSalary.toFixed(2)}`;
+            document.getElementById('printWorkdayFee').innerText = `￥${workdayFee.toFixed(2)}`;
+            document.getElementById('printWeekendFee').innerText = `￥${weekendFee.toFixed(2)}`;
+            document.getElementById('printHolidayFee').innerText = `￥${holidayFee.toFixed(2)}`;
+            document.getElementById('printTotalFee').innerText = `￥${totalFee.toFixed(2)}`;
+        }
+        function copyResult() {
+            const totalFee = document.getElementById('printTotalFee').innerText;
+            if (totalFee === '-') {
+                alert('请先生成计算结果！');
+                return;
+            }
+            const copyText = `
+加班工资明细单
+月基本工资：${document.getElementById('printSalary').innerText}
+月计薪天数：${document.getElementById('printDays').innerText}
+日均工资：${document.getElementById('printDaySalary').innerText}
+时均工资：${document.getElementById('printHourSalary').innerText}
+工作日加班费：${document.getElementById('printWorkdayFee').innerText}
+周末加班费：${document.getElementById('printWeekendFee').innerText}
+法定节假日加班费：${document.getElementById('printHolidayFee').innerText}
+总加班费：${totalFee}
+            `.trim();
+            navigator.clipboard.writeText(copyText).then(() => {
+                alert('结果已复制到剪贴板！');
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = copyText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('结果已复制到剪贴板！');
+            });
+        }
+        function printDetail() { window.print(); }
+        function sharePage() {
+            const url = window.location.href;
+            const title = document.title;
+            if (navigator.share) {
+                navigator.share({ title, url }).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('链接已复制到剪贴板！');
+                }).catch(() => alert('复制失败，请手动复制链接'));
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026离职赔偿金计算器_N/N+1/2N补偿标准_经济补偿金个税在线计算 - 智汇工薪助手</title>
+    <meta name="description" content="2026最新劳动法标准离职赔偿金计算器，支持N/N+1/2N补偿标准精准核算，自动计算经济补偿金个税免税额度，一键算出税后到手补偿金额，职场人必备免费工具。">
+    <meta name="keywords" content="离职赔偿金计算器,经济补偿金计算,N+1赔偿标准,2N赔偿规则,离职补偿金个税,劳动法赔偿在线计算,被辞退赔偿计算器">
+    <meta name="author" content="智汇工薪助手">
+    <!-- 【修复】canonical链接 -->
+    <link rel="canonical" href="https://lixijsq.com/tools/severance-pay-calculator/index.html">
+    <meta property="og:site_name" content="智汇工薪助手">
+    <meta property="og:title" content="2026离职赔偿金计算器_N/N+1/2N补偿标准_经济补偿金个税在线计算">
+    <meta property="og:description" content="2026最新劳动法标准离职赔偿金计算器，支持N/N+1/2N补偿标准精准核算，自动计算经济补偿金个税免税额度，一键算出税后到手补偿金额。">
+    <meta property="og:type" content="website">
+    <!-- 【修复】OG URL -->
+    <meta property="og:url" content="https://lixijsq.com/tools/severance-pay-calculator/index.html">
+    <meta property="og:locale" content="zh_CN">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <meta name="application-name" content="智汇工薪助手">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- 【修复】CSS路径 -->
+    <link rel="stylesheet" href="/css/global.css">
+    
+    <!-- 页面专属CSS -->
+    <style>
+        /* 计算器卡片样式 */
+        .calc-card {
+            background: #fff;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            padding: var(--space-5);
+            margin-bottom: var(--space-5);
+        }
+        
+        /* 快速计算按钮组 */
+        .quick-calc-group {
+            margin-bottom: var(--space-5);
+            padding: var(--space-4);
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+        }
+        
+        .quick-calc-title {
+            font-weight: 600;
+            color: var(--text-title);
+            margin-bottom: var(--space-3);
+            font-size: 0.95rem;
+        }
+        
+        .quick-calc-btns {
+            display: flex;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+        }
+        
+        .quick-calc-btn {
+            padding: var(--space-2) var(--space-4);
+            border: 1px solid var(--primary);
+            background: #fff;
+            color: var(--primary);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .quick-calc-btn:hover, .quick-calc-btn.active {
+            background: var(--primary);
+            color: #fff;
+        }
+        
+        /* 输入行样式 */
+        .input-row {
+            display: flex;
+            gap: var(--space-6);
+            margin-bottom: var(--space-5);
+            flex-wrap: wrap;
+        }
+        
+        .input-group {
+            flex: 1;
+            min-width: 260px;
+        }
+        
+        /* 日期选择组 */
+        .date-group {
+            display: flex;
+            gap: var(--space-2);
+        }
+        
+        .date-group select {
+            flex: 1;
+            min-width: 80px;
+        }
+        
+        /* 标签和输入框样式 */
+        label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: 500;
+            color: var(--text-title);
+            font-size: 1rem;
+        }
+        
+        input[type="number"], select {
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        
+        input:disabled {
+            background: #f1f5f9;
+            cursor: not-allowed;
+        }
+        
+        .type-tip {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-1);
+        }
+        
+        /* 结果展示样式 */
+        .result-box {
+            display: block;
+            margin: var(--space-4) 0;
+            padding: var(--space-5);
+            background: linear-gradient(135deg, rgba(239, 246, 255, 0.9) 0%, rgba(219, 234, 254, 0.7) 100%);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        
+        /* 打印区域样式 */
+        .print-area {
+            display: block;
+        }
+        
+        .result-detail {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            margin-bottom: var(--space-5);
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-2) 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .result-item.total {
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-bottom: none;
+            margin-top: var(--space-2);
+            padding-top: var(--space-3);
+            border-top: 2px solid var(--border-light);
+            color: var(--primary);
+        }
+        
+        /* 参考表格样式 */
+        .reference-table-wrap {
+            overflow-x: auto;
+            margin: var(--space-4) 0;
+        }
+        
+        .reference-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        
+        .reference-table thead tr {
+            background: rgba(59, 130, 246, 0.1);
+        }
+        
+        .reference-table th, .reference-table td {
+            padding: 12px 10px;
+            border: 1px solid var(--border-light);
+        }
+        
+        .reference-table th {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* 工具卡片内链接样式 */
+        .tool-inner-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+        
+        .tool-inner-link:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .input-row {
+                gap: var(--space-4);
+            }
+            
+            .input-group {
+                min-width: 100%;
+            }
+            
+            .quick-calc-btns {
+                gap: var(--space-2);
+            }
+            
+            .quick-calc-btn {
+                padding: var(--space-2) var(--space-3);
+                font-size: 0.85rem;
+            }
+            
+            .date-group {
+                flex-wrap: wrap;
+            }
+            
+            .calc-card {
+                padding: var(--space-4);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .quick-calc-btns {
+                justify-content: space-between;
+            }
+            
+            .quick-calc-btn {
+                flex: 1;
+                min-width: 30%;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <!-- SEO结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "2026离职赔偿金计算器",
+      "applicationCategory": "CalculatorApplication",
+      "operatingSystem": "Web",
+      "description": "2026最新劳动法标准开发的离职赔偿金计算器，支持N/N+1/2N补偿标准精准核算，自动计算工作年限、经济补偿金个税免税额度，一键算出税后到手补偿金额，支持一键复制结果、保存PDF。",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "智汇工薪助手"
+      },
+      "featureList": [
+        "支持N/N+1/2N三类补偿类型",
+        "入职日期自动计算工作年限",
+        "热门城市社平工资自动匹配",
+        "经济补偿金个税免税额度自动核算",
+        "完整赔偿明细单展示",
+        "一键复制结果、打印明细、保存PDF"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "离职赔偿金计算使用教程",
+      "description": "教你如何使用离职赔偿金计算器，按照劳动法标准精准算出应得的经济补偿金额",
+      "totalTime": "PT1M",
+      "steps": [
+        {
+          "@type": "HowToStep",
+          "name": "选择补偿类型",
+          "text": "根据离职情况，选择对应的补偿类型：N（经济补偿）、N+1（代通知金）、2N（违法解除赔偿金）",
+          "url": "#step1"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "选择入职日期",
+          "text": "选择你的入职年月日，系统将自动按照劳动法标准核算合规工作年限，也可点击快速填充按钮一键选择常用入职时间",
+          "url": "#step2"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "填写月工资与所在城市",
+          "text": "填写离职前12个月平均月工资，选择所在城市，系统将自动带出当地上年职工平均工资，用于核算个税免税额度",
+          "url": "#step3"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "查看实时计算结果",
+          "text": "系统将自动按照劳动法标准，实时计算出税前补偿总额、个税、税后到手金额等完整明细",
+          "url": "#step4"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "导出计算结果",
+          "text": "查看完整离职赔偿明细单，可一键复制结果、打印明细单或保存为PDF文件",
+          "url": "#step5"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "离职补偿金N、N+1、2N分别是什么意思？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "N指经济补偿金，按劳动者在本单位工作的年限，每满1年支付1个月工资的标准向劳动者支付；N+1指经济补偿金+代通知金，适用于用人单位无过失性辞退且未提前30天书面通知的情形；2N指违法解除劳动合同赔偿金，是经济补偿金的2倍，适用于用人单位违法解除或终止劳动合同的情形。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "离职补偿金的月工资标准怎么算？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "经济补偿金的月工资，是指劳动者在劳动合同解除或者终止前12个月的平均工资，包含计时工资、计件工资、奖金、津贴和补贴等货币性收入；若劳动者月工资高于用人单位所在直辖市、设区的市级人民政府公布的本地区上年度职工月平均工资3倍的，按职工月平均工资3倍的数额支付，支付年限最高不超过12年。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "离职补偿金需要缴纳个人所得税吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "个人与用人单位解除劳动关系取得一次性补偿收入，在当地上年职工平均工资3倍数额以内的部分，免征个人所得税；超过3倍数额的部分，不并入当年综合所得，单独适用综合所得税率表计算纳税。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "工作年限不满1年怎么算补偿？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "工作年限6个月以上不满1年的，按1年计算，支付1个月工资的经济补偿；不满6个月的，按0.5年计算，支付半个月工资的经济补偿。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "自己主动辞职可以拿到经济补偿金吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "一般情况下，劳动者主动辞职无法获得经济补偿金；但如果是因用人单位存在未及时足额支付劳动报酬、未依法缴纳社会保险费、规章制度违法损害劳动者权益等法定过错情形，劳动者被迫解除劳动合同的，用人单位应当支付经济补偿金。"
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- 【修复】顶部导航 -->
+    <nav role="navigation" aria-label="主导航">
+        <div class="nav-container">
+            <a href="/" class="logo" title="智汇工薪助手首页">
+                <svg class="icon icon-white" viewBox="0 0 24 24">
+                    <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+                </svg>
+                智汇工薪助手
+            </a>
+            <div class="nav-toggle-wrapper">
+                <button class="nav-toggle-btn" id="navToggleBtn" aria-label="所有工具" aria-expanded="false" aria-controls="navMenu">
+                    <span>所有工具</span>
+                    <svg class="icon" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                </button>
+                <div class="nav-menu" id="navMenu" aria-hidden="true">
+                    <a href="/tools/after-tax-salary-calculator/index.html" class="nav-link">税后工资计算器</a>
+                    <a href="/tools/overtime-pay-calculator/index.html" class="nav-link">加班费计算器</a>
+                    <a href="/tools/leave-deduction-calculator/index.html" class="nav-link">请假扣款计算器</a>
+                    <a href="/tools/year-end-bonus-tax-calculator/index.html" class="nav-link">年终奖个税计算器</a>
+                    <a href="/tools/severance-pay-calculator/index.html" class="nav-link">离职赔偿金计算器</a>
+                    <a href="/tools/retirement-delay-calculator/index.html" class="nav-link">延迟退休测算器</a>
+                    <a href="/tools/chinese-amount-converter/index.html" class="nav-link">金额大写转换器</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>2026离职赔偿金计算器（劳动法标准）</h1>
+        <p class="page-desc">严格遵循《劳动合同法》开发，支持N/N+1/2N补偿标准，自动核算工作年限与个税免税额度，一键算出税后到手赔偿金额</p>
+        
+        <!-- 计算器主功能区 -->
+        <div class="calc-card" id="step1">
+            <div class="input-group">
+                <label for="compensateType">补偿类型</label>
+                <select id="compensateType" onchange="calcCompensate()">
+                    <option value="N">N（经济补偿金）</option>
+                    <option value="N+1">N+1（经济补偿金+代通知金）</option>
+                    <option value="2N">2N（违法解除赔偿金）</option>
+                </select>
+                <div class="type-tip">根据离职原因选择对应的补偿类型</div>
+            </div>
+            
+            <div class="quick-calc-group">
+                <div class="quick-calc-title">📅 常用入职时间快速填充（点击一键选择）</div>
+                <div class="quick-calc-btns">
+                    <button class="quick-calc-btn" onclick="quickFillDate(0.5)">半年前入职</button>
+                    <button class="quick-calc-btn" onclick="quickFillDate(1)">1年前入职</button>
+                    <button class="quick-calc-btn" onclick="quickFillDate(2)">2年前入职</button>
+                    <button class="quick-calc-btn" onclick="quickFillDate(3)">3年前入职</button>
+                    <button class="quick-calc-btn" onclick="quickFillDate(5)">5年前入职</button>
+                    <button class="quick-calc-btn" onclick="quickFillDate(10)">10年前入职</button>
+                </div>
+            </div>
+            
+            <div class="input-row" id="step2">
+                <div class="input-group">
+                    <label>入职日期（可手动填写/点选）</label>
+                    <div class="date-group">
+                        <select id="entryYear" onchange="updateDayOptions(); calcWorkYears(); calcCompensate();"></select>
+                        <select id="entryMonth" onchange="updateDayOptions(); calcWorkYears(); calcCompensate();"></select>
+                        <select id="entryDay" onchange="calcWorkYears(); calcCompensate();"></select>
+                    </div>
+                    <div class="type-tip">选入职日期自动计算，满6个月按1年算，不满6个月按0.5年算</div>
+                </div>
+                <div class="input-group">
+                    <label for="workYears">折算后年限（可手动改）</label>
+                    <input type="number" id="workYears" value="3" min="0" step="0.5" placeholder="自动计算" readonly>
+                    <div class="type-tip">按劳动法规则自动核算，不满6个月按0.5年算</div>
+                </div>
+            </div>
+            
+            <div class="input-row" id="step3">
+                <div class="input-group">
+                    <label for="monthSalary">离职前12个月平均月工资（元）</label>
+                    <input type="number" id="monthSalary" value="15000" min="0" placeholder="请输入平均月工资" oninput="calcCompensate()">
+                    <div class="type-tip">包含基本工资、奖金、津贴、补贴等所有货币性收入</div>
+                </div>
+                <div class="input-group">
+                    <label for="workCity">所在城市</label>
+                    <select id="workCity" onchange="changeCity(); calcCompensate();">
+                        <option value="205000">深圳</option>
+                        <option value="220000">北京</option>
+                        <option value="210000">上海</option>
+                        <option value="185000">广州</option>
+                        <option value="178000">杭州</option>
+                        <option value="175000">苏州</option>
+                        <option value="172000">南京</option>
+                        <option value="170000">宁波</option>
+                        <option value="165000">无锡</option>
+                        <option value="155000">成都</option>
+                        <option value="152000">武汉</option>
+                        <option value="150000">青岛</option>
+                        <option value="148000">长沙</option>
+                        <option value="146000">天津</option>
+                        <option value="145000">重庆</option>
+                        <option value="142000">西安</option>
+                        <option value="140000">东莞</option>
+                        <option value="138000">郑州</option>
+                        <option value="136000">合肥</option>
+                        <option value="135000">佛山</option>
+                        <option value="0">其他城市</option>
+                    </select>
+                    <div class="type-tip">选择城市自动匹配2025年官方发布全口径城镇单位就业人员年平均工资</div>
+                </div>
+            </div>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="localAvgSalary">当地上年度职工年平均工资（元）</label>
+                    <input type="number" id="localAvgSalary" value="205000" min="0" placeholder="请输入年平均工资" oninput="calcCompensate()">
+                    <div class="type-tip">选择其他城市时可手动修改，用于核算个税免税额度与补偿基数封顶</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-group" id="step4">
+            <button onclick="calcCompensate()">计算赔偿金</button>
+            <button class="btn-success" onclick="copyResult()">一键复制结果</button>
+            <button class="btn-accent" onclick="sharePage()">📤 一键分享</button>
+        </div>
+        
+        <!-- 结果展示区域 -->
+        <div id="res" class="result-box"></div>
+
+        <!-- 离职赔偿金明细单 -->
+        <div class="card print-area" id="printArea">
+            <h2>📋 离职经济补偿金明细单</h2>
+            <div class="result-detail">
+                <div class="result-item">
+                    <span>折算后工作年限</span>
+                    <strong id="printYears">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>补偿计算基数</span>
+                    <strong id="printBaseSalary">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>补偿类型</span>
+                    <strong id="printType">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>税前补偿总额</span>
+                    <strong id="printTotal">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>个税免税额度</span>
+                    <strong id="printTaxFree">-</strong>
+                </div>
+                <div class="result-item">
+                    <span>应缴个税</span>
+                    <strong id="printTax">-</strong>
+                </div>
+                <div class="result-item total">
+                    <span>税后到手金额</span>
+                    <strong id="printFinal">-</strong>
+                </div>
+            </div>
+            <div class="tax-note">
+                <strong>📌 法律依据：</strong><br>
+                1. 《劳动合同法》第47条：经济补偿按劳动者在本单位工作的年限，每满一年支付一个月工资的标准向劳动者支付。六个月以上不满一年的，按一年计算；不满六个月的，支付半个月工资的经济补偿。月工资高于当地社平工资3倍的，按3倍数额支付，年限最高不超过12年。<br>
+                2. 个税政策：个人与用人单位解除劳动关系取得的一次性补偿收入，在当地上年职工平均工资3倍数额以内的部分，免征个人所得税；超过部分单独适用综合所得税率表计税。
+            </div>
+            <div class="btn-group">
+                <button class="btn-print" onclick="printDetail()">🖨️ 打印明细单</button>
+                <button class="btn-accent" onclick="downloadPDF()">📄 保存为PDF</button>
+            </div>
+        </div>
+
+        <!-- 相关攻略推荐 -->
+        <div class="card">
+            <h2>📌 相关攻略推荐</h2>
+            <div class="tools-grid">
+                <!-- 【修复】工具卡片data-href和内部链接 -->
+                <article class="tool-card" data-href="/tools/severance-pay-calculator/beicitui-neng-na-duoshaoqian.html" tabindex="0" role="link">
+                    <h3>离职赔偿法定标准</h3>
+                    <p>被公司辞退能拿多少钱？N、N+1、2N到底怎么算？一文讲清</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/severance-pay-calculator/beicitui-neng-na-duoshaoqian.html" class="tool-inner-link" onclick="event.stopPropagation();">查看完整标准 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/severance-pay-calculator/shiyongqi-beicitui-you-buchengma.html" tabindex="0" role="link">
+                    <h3>试用期维权全指南</h3>
+                    <p>试用期被辞退有补偿吗？别被公司忽悠了！这些情况必须赔钱</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/severance-pay-calculator/shiyongqi-beicitui-you-buchengma.html" class="tool-inner-link" onclick="event.stopPropagation();">查看维权指南 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/severance-pay-calculator/zhudong-lizhi-you-buchengma.html" tabindex="0" role="link">
+                    <h3>主动离职必看</h3>
+                    <p>主动辞职也能拿补偿金？这6种情况，别白白走了！</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/severance-pay-calculator/zhudong-lizhi-you-buchengma.html" class="tool-inner-link" onclick="event.stopPropagation();">查看维权指南 →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- 离职补偿类型对照表 -->
+        <div class="card">
+            <h2 class="about-title">📊 离职补偿类型适用场景对照表</h2>
+            <div class="reference-table-wrap">
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>补偿类型</th>
+                            <th>补偿标准</th>
+                            <th>核心适用场景</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>N（经济补偿金）</td>
+                            <td>工作年限×月工资</td>
+                            <td>双方协商一致解除劳动合同、劳动者被迫解除、无过失性辞退、经济性裁员、劳动合同到期不续签等法定情形</td>
+                        </tr>
+                        <tr>
+                            <td>N+1</td>
+                            <td>工作年限×月工资+1个月工资</td>
+                            <td>劳动者患病/非因工负伤医疗期满不能从事原工作、不能胜任工作经培训仍不能胜任、客观情况重大变化无法履行合同，且未提前30天书面通知</td>
+                        </tr>
+                        <tr>
+                            <td>2N（赔偿金）</td>
+                            <td>2×工作年限×月工资</td>
+                            <td>用人单位违法解除或终止劳动合同，如无理由辞退、孕期/产期/哺乳期辞退、医疗期内辞退、工伤期间辞退等违法情形</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 个税税率表 -->
+        <div class="card">
+            <h2 class="about-title">📈 离职补偿金个税税率表（单独计税）</h2>
+            <div class="reference-table-wrap">
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>级数</th>
+                            <th>超过免税额度的应纳税所得额</th>
+                            <th>税率</th>
+                            <th>速算扣除数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>不超过36000元的部分</td><td>3%</td><td>0</td></tr>
+                        <tr><td>2</td><td>超过36000元至144000元的部分</td><td>10%</td><td>2520</td></tr>
+                        <tr><td>3</td><td>超过144000元至300000元的部分</td><td>20%</td><td>16920</td></tr>
+                        <tr><td>4</td><td>超过300000元至420000元的部分</td><td>25%</td><td>31920</td></tr>
+                        <tr><td>5</td><td>超过420000元至660000元的部分</td><td>30%</td><td>52920</td></tr>
+                        <tr><td>6</td><td>超过660000元至960000元的部分</td><td>35%</td><td>85920</td></tr>
+                        <tr><td>7</td><td>超过960000元的部分</td><td>45%</td><td>181920</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 计算器说明 -->
+        <section class="card">
+            <h2 class="about-title">计算器说明</h2>
+            <h3>一、政策依据</h3>
+            <p>本离职赔偿金计算器严格依据《中华人民共和国劳动合同法》《中华人民共和国个人所得税法》及财政部、税务总局相关优惠政策开发，完全贴合国家法定离职赔偿核算标准。支持N、N+1、2N三类核心补偿场景，自动匹配3倍社平工资封顶规则、个税免税额度核算，所有计算规则完全符合劳动仲裁、法院裁判的通用核算标准，计算结果可作为职场人离职协商、劳动维权的参考依据。</p>
+            <h3>二、核心计算规则</h3>
+            <ol class="advantage-list">
+                <li><strong>补偿基数核算：</strong>补偿基数为劳动者在劳动合同解除或者终止前12个月的平均工资，包含计时工资、计件工资、奖金、津贴和补贴等货币性收入；月工资高于当地上年度职工月平均工资3倍的，按3倍数额封顶，补偿年限最高不超过12年。</li>
+                <li><strong>工作年限核算：</strong>每满1年支付1个月工资，6个月以上不满1年的按1年计算，不满6个月的按0.5个月工资计算。</li>
+                <li><strong>补偿总额计算：</strong>N=补偿年限×月工资；N+1=补偿年限×月工资+1个月工资（代通知金）；2N=2×补偿年限×月工资。</li>
+                <li><strong>个税核算规则：</strong>当地上年职工平均工资3倍以内的部分免征个税，超出部分不并入当年综合所得，单独适用综合所得税率表计税。</li>
+            </ol>
+        </section>
+
+        <!-- 使用指南 -->
+        <section class="card">
+            <h2 class="about-title">计算器使用指南</h2>
+            <ol class="advantage-list">
+                <li><strong>选择补偿类型：</strong>根据你的离职情况，选择对应的补偿类型，系统会自动显示该类型的适用场景，帮助你确认选择是否正确。</li>
+                <li><strong>填写入职日期：</strong>选择你的入职年月日，系统将自动按照劳动法标准，核算出合规的工作年限，也可点击快速填充按钮一键选择常用入职时间。</li>
+                <li><strong>填写薪资与所在城市：</strong>填写离职前12个月的平均月工资，选择你的工作城市，系统将自动带出当地2025年官方发布的职工年平均工资，无需手动填写，选择其他城市可手动修改。</li>
+                <li><strong>查看计算结果：</strong>填写完成后，点击计算按钮，系统将自动计算出税前补偿总额、个税免税额度、应缴个税、税后到手补偿金额，同时生成完整的明细单。</li>
+                <li><strong>导出计算结果：</strong>可一键复制结果、打印明细单或保存为PDF文件，方便你和公司协商离职补偿，或作为劳动仲裁、维权的参考凭证。</li>
+            </ol>
+        </section>
+
+        <!-- 常见问题解答 -->
+        <section class="card">
+            <h2 class="about-title">常见问题解答</h2>
+            <div class="faq-item">
+                <h3>离职补偿金N、N+1、2N分别是什么意思？</h3>
+                <p>N指经济补偿金，按劳动者在本单位工作的年限，每满1年支付1个月工资的标准向劳动者支付；N+1指经济补偿金+代通知金，适用于用人单位无过失性辞退且未提前30天书面通知的情形；2N指违法解除劳动合同赔偿金，是经济补偿金的2倍，适用于用人单位违法解除或终止劳动合同的情形。</p>
+            </div>
+            <div class="faq-item">
+                <h3>离职补偿金的月工资标准怎么算？</h3>
+                <p>经济补偿金的月工资，是指劳动者在劳动合同解除或者终止前12个月的平均工资，包含计时工资、计件工资、奖金、津贴和补贴等货币性收入；若劳动者月工资高于用人单位所在直辖市、设区的市级人民政府公布的本地区上年度职工月平均工资3倍的，按职工月平均工资3倍的数额支付，支付年限最高不超过12年。</p>
+            </div>
+            <div class="faq-item">
+                <h3>离职补偿金需要缴纳个人所得税吗？</h3>
+                <p>个人与用人单位解除劳动关系取得一次性补偿收入，在当地上年职工平均工资3倍数额以内的部分，免征个人所得税；超过3倍数额的部分，不并入当年综合所得，单独适用综合所得税率表计算纳税。</p>
+            </div>
+            <div class="faq-item">
+                <h3>工作年限不满1年怎么算补偿？</h3>
+                <p>工作年限6个月以上不满1年的，按1年计算，支付1个月工资的经济补偿；不满6个月的，按0.5年计算，支付半个月工资的经济补偿。</p>
+            </div>
+            <div class="faq-item">
+                <h3>自己主动辞职可以拿到经济补偿金吗？</h3>
+                <p>一般情况下，劳动者主动辞职无法获得经济补偿金；但如果是因用人单位存在未及时足额支付劳动报酬、未依法缴纳社会保险费、规章制度违法损害劳动者权益等法定过错情形，劳动者被迫解除劳动合同的，用人单位应当支付经济补偿金。</p>
+            </div>
+            <div class="faq-item">
+                <h3>代通知金的工资标准怎么算？</h3>
+                <p>代通知金的工资标准，按照劳动者上一个月的工资标准确定，不是按照离职前12个月的平均工资计算，若上一个月的工资不能反映正常工资水平的，可按离职前12个月的平均工资计算。</p>
+            </div>
+        </section>
+
+        <!-- 更多实用工具 -->
+        <section class="card">
+            <h2>🛠️ 更多实用工具</h2>
+            <div class="tools-grid">
+                <!-- 【修复】工具卡片data-href和内部链接 -->
+                <article class="tool-card" data-href="/tools/after-tax-salary-calculator/index.html" tabindex="0" role="link">
+                    <h3>税后工资计算器</h3>
+                    <p>2026最新个税规则，精准算出税后到手工资，附带完整个税明细</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/after-tax-salary-calculator/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/overtime-pay-calculator/index.html" tabindex="0" role="link">
+                    <h3>加班费计算器</h3>
+                    <p>劳动法标准加班费计算，工作日/周末/节假日加班一键核算</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/overtime-pay-calculator/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/leave-deduction-calculator/index.html" tabindex="0" role="link">
+                    <h3>请假扣款计算器</h3>
+                    <p>事假/病假工资核算，符合医疗期标准，精准算出扣款金额</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/leave-deduction-calculator/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/year-end-bonus-tax-calculator/index.html" tabindex="0" role="link">
+                    <h3>年终奖个税对比计算器</h3>
+                    <p>单独计税/合并计税一键对比，自动算出最优省税方案</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/year-end-bonus-tax-calculator/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/retirement-delay-calculator/index.html" tabindex="0" role="link">
+                    <h3>延迟退休计算器</h3>
+                    <p>2026渐进式延迟退休政策测算，精确到月预测退休时间</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/retirement-delay-calculator/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+                <article class="tool-card" data-href="/tools/chinese-amount-converter/index.html" tabindex="0" role="link">
+                    <h3>中文大写金额转换工具</h3>
+                    <p>符合财务、银行标准的中文大写金额转换，支持一键复制</p>
+                    <div class="tool-card-footer">
+                        <a href="/tools/chinese-amount-converter/index.html" class="tool-inner-link" onclick="event.stopPropagation();">立即使用 →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- 【修复】页脚 -->
+    <footer class="footer-links">
+        <nav style="background: transparent; backdrop-filter: none; border: none; box-shadow: none; position: static; margin-bottom: var(--space-4);">
+            <a href="/about.html">关于我们</a>
+            <a href="/contact.html">联系反馈</a>
+            <a href="/privacy.html">隐私政策</a>
+            <a href="/disclaimer.html">免责声明</a>
+        </nav>
+        <p>© 2026 智汇工薪助手 版权所有 | 所有工具均严格遵循国家相关法律法规开发</p>
+    </footer>
+
+    <!-- Cookie弹窗 -->
+    <div class="cookie-popup" id="cookiePopup">
+        <div class="cookie-content">
+            <h3>
+                <svg class="icon" viewBox="0 0 24 24" width="20" height="20" style="background: linear-gradient(135deg, var(--warning-light) 0%, var(--warning) 100%); padding: var(--space-2); border-radius: var(--radius-md); color: var(--warning);">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                Cookie 提示
+            </h3>
+            <p>我们使用Cookie来提升您的浏览体验和分析网站流量，相关数据仅用于优化网站功能。您可以选择接受或拒绝，详细内容请查看我们的<a href="/privacy.html">隐私政策</a>。</p>
+        </div>
+        <div class="cookie-buttons">
+            <button id="rejectCookies" class="btn-outline">拒绝</button>
+            <button id="acceptCookies" class="btn-primary">接受</button>
+        </div>
+    </div>
+
+    <script>
+        // 核心税率表和全局变量
+        const taxRateTable = [
+            { min: 0, max: 36000, rate: 0.03, quickDeduction: 0 },
+            { min: 36000, max: 144000, rate: 0.1, quickDeduction: 2520 },
+            { min: 144000, max: 300000, rate: 0.2, quickDeduction: 16920 },
+            { min: 300000, max: 420000, rate: 0.25, quickDeduction: 31920 },
+            { min: 420000, max: 660000, rate: 0.3, quickDeduction: 52920 },
+            { min: 660000, max: 960000, rate: 0.35, quickDeduction: 85920 },
+            { min: 960000, max: Infinity, rate: 0.45, quickDeduction: 181920 }
+        ];
+        window.currentResult = {};
+
+        // 个税计算函数
+        function calcTax(income) {
+            for (let i = 0; i < taxRateTable.length; i++) {
+                const item = taxRateTable[i];
+                if (income > item.min && income <= item.max) {
+                    return income * item.rate - item.quickDeduction;
+                }
+            }
+            return 0;
+        }
+
+        // 初始化日期下拉框
+        function initDateSelect() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const currentMonth = now.getMonth() + 1;
+            const currentDay = now.getDate();
+            const yearSelect = document.getElementById('entryYear');
+            const monthSelect = document.getElementById('entryMonth');
+            const daySelect = document.getElementById('entryDay');
+
+            let yearOptions = '';
+            for (let y = 1990; y <= currentYear; y++) {
+                const selected = y === currentYear - 3 ? 'selected' : '';
+                yearOptions += `<option value="${y}" ${selected}>${y}年</option>`;
+            }
+            yearSelect.innerHTML = yearOptions;
+
+            let monthOptions = '';
+            for (let m = 1; m <= 12; m++) {
+                const selected = m === currentMonth ? 'selected' : '';
+                monthOptions += `<option value="${m}" ${selected}>${m}月</option>`;
+            }
+            monthSelect.innerHTML = monthOptions;
+
+            updateDayOptions();
+            daySelect.value = currentDay;
+        }
+
+        // 动态更新日期选项
+        function updateDayOptions() {
+            const year = parseInt(document.getElementById('entryYear').value);
+            const month = parseInt(document.getElementById('entryMonth').value);
+            const daySelect = document.getElementById('entryDay');
+            const currentDay = parseInt(daySelect.value) || 1;
+
+            let maxDay = 31;
+            if ([4,6,9,11].includes(month)) maxDay = 30;
+            if (month === 2) {
+                const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+                maxDay = isLeapYear ? 29 : 28;
+            }
+
+            let dayOptions = '';
+            for (let d = 1; d <= maxDay; d++) {
+                const selected = d === currentDay ? 'selected' : '';
+                dayOptions += `<option value="${d}" ${selected}>${d}日</option>`;
+            }
+            daySelect.innerHTML = dayOptions;
+            daySelect.value = currentDay <= maxDay ? currentDay : maxDay;
+        }
+
+        // 计算工作年限
+        function calcWorkYears() {
+            const year = parseInt(document.getElementById('entryYear').value);
+            const month = parseInt(document.getElementById('entryMonth').value);
+            const day = parseInt(document.getElementById('entryDay').value);
+            const workYearsInput = document.getElementById('workYears');
+            const entryDate = new Date(year, month - 1, day);
+            const now = new Date();
+
+            if (entryDate > now) {
+                workYearsInput.value = 0;
+                return 0;
+            }
+
+            let yearDiff = now.getFullYear() - entryDate.getFullYear();
+            let monthDiff = now.getMonth() - entryDate.getMonth();
+            let dayDiff = now.getDate() - entryDate.getDate();
+
+            if (dayDiff < 0) {
+                monthDiff -= 1;
+                const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                dayDiff += lastMonth.getDate();
+            }
+            if (monthDiff < 0) {
+                yearDiff -= 1;
+                monthDiff += 12;
+            }
+
+            const totalMonths = yearDiff * 12 + monthDiff;
+            let workYears = Math.floor(totalMonths / 12);
+            const remainMonths = totalMonths % 12;
+
+            if (remainMonths >= 6) workYears += 1;
+            else if (remainMonths > 0) workYears += 0.5;
+
+            workYearsInput.value = workYears;
+            return workYears;
+        }
+
+        // 快速填充入职日期
+        window.quickFillDate = function(yearsAgo) {
+            const now = new Date();
+            now.setFullYear(now.getFullYear() - yearsAgo);
+            const targetYear = now.getFullYear();
+            const targetMonth = now.getMonth() + 1;
+            const targetDay = now.getDate();
+
+            document.getElementById('entryYear').value = targetYear;
+            document.getElementById('entryMonth').value = targetMonth;
+            updateDayOptions();
+            document.getElementById('entryDay').value = targetDay;
+
+            document.querySelectorAll('.quick-calc-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            calcWorkYears();
+            calcCompensate();
+        };
+
+        // 城市切换
+        window.changeCity = function() {
+            const citySelect = document.getElementById('workCity');
+            const salaryInput = document.getElementById('localAvgSalary');
+            const selectedSalary = citySelect.value;
+            salaryInput.value = selectedSalary;
+            salaryInput.disabled = selectedSalary !== '0';
+        };
+
+        // 核心赔偿计算函数
+        window.calcCompensate = function() {
+            const compensateType = document.getElementById('compensateType').value;
+            const monthSalary = parseFloat(document.getElementById('monthSalary').value) || 0;
+            const workYears = parseFloat(document.getElementById('workYears').value) || 0;
+            const localAvgSalary = parseFloat(document.getElementById('localAvgSalary').value) || 0;
+            const res = document.getElementById('res');
+
+            const monthlyAvgSalary = localAvgSalary / 12;
+            const cappedSalary = Math.min(monthSalary, monthlyAvgSalary * 3);
+            const cappedYears = monthSalary > monthlyAvgSalary * 3 ? Math.min(workYears, 12) : workYears;
+
+            let multiple = 0, typeName = '';
+            if (compensateType === 'N') {
+                multiple = 1;
+                typeName = 'N（经济补偿金）';
+            } else if (compensateType === 'N+1') {
+                multiple = 1;
+                typeName = 'N+1（经济补偿金+代通知金）';
+            } else if (compensateType === '2N') {
+                multiple = 2;
+                typeName = '2N（违法解除赔偿金）';
+            }
+
+            let calcYears = Math.floor(cappedYears);
+            const decimal = cappedYears - calcYears;
+            if (decimal >= 0.5) calcYears += 1;
+            else if (decimal > 0) calcYears += 0.5;
+
+            let totalCompensate = calcYears * cappedSalary * multiple;
+            if (compensateType === 'N+1') totalCompensate += monthSalary;
+
+            const taxFreeAmount = localAvgSalary * 3;
+            const taxableAmount = Math.max(totalCompensate - taxFreeAmount, 0);
+            const tax = calcTax(taxableAmount);
+            const finalAmount = totalCompensate - tax;
+
+            const entryDateFormatted = `${document.getElementById('entryYear').value}年${document.getElementById('entryMonth').value}月${document.getElementById('entryDay').value}日`;
+
+            res.style.display = 'block';
+            res.innerHTML = `
+                📄 补偿类型：${typeName}<br>
+                📅 入职日期：${entryDateFormatted}<br>
+                💰 平均月工资：￥${monthSalary.toFixed(2)}<br>
+                ⏱️ 核算工作年限：${workYears.toFixed(1)}年<br>
+                💳 税前补偿总额：￥${totalCompensate.toFixed(2)}<br>
+                🆓 个税免税额度：￥${taxFreeAmount.toFixed(2)}<br>
+                💸 应缴个税：￥${tax.toFixed(2)}<br>
+                🎯 税后到手补偿金额：<strong style="font-size:1.2rem; color:var(--primary);">￥${finalAmount.toFixed(2)}</strong>
+            `;
+
+            document.getElementById('printType').innerText = typeName;
+            document.getElementById('printYears').innerText = `${workYears.toFixed(1)}年`;
+            document.getElementById('printBaseSalary').innerText = `￥${cappedSalary.toFixed(2)}/月`;
+            document.getElementById('printTotal').innerText = `￥${totalCompensate.toFixed(2)}`;
+            document.getElementById('printTaxFree').innerText = `￥${taxFreeAmount.toFixed(2)}`;
+            document.getElementById('printTax').innerText = `￥${tax.toFixed(2)}`;
+            document.getElementById('printFinal').innerText = `￥${finalAmount.toFixed(2)}`;
+
+            window.currentResult = {
+                typeName, entryDate: entryDateFormatted, monthSalary, workYears, totalCompensate, taxFreeAmount, tax, finalAmount
+            };
+        };
+
+        // 复制结果功能
+        window.copyResult = function() {
+            const finalAmount = document.getElementById('printFinal').innerText;
+            if (finalAmount === '-') {
+                alert('请先生成计算结果！');
+                return;
+            }
+            const copyText = `
+离职赔偿金明细单
+补偿类型：${window.currentResult.typeName}
+入职日期：${window.currentResult.entryDate}
+平均月工资：￥${window.currentResult.monthSalary.toFixed(2)}
+核算工作年限：${window.currentResult.workYears.toFixed(1)}年
+税前补偿总额：￥${window.currentResult.totalCompensate.toFixed(2)}
+个税免税额度：￥${window.currentResult.taxFreeAmount.toFixed(2)}
+应缴个税：￥${window.currentResult.tax.toFixed(2)}
+税后到手补偿金额：￥${window.currentResult.finalAmount.toFixed(2)}
+            `.trim();
+            navigator.clipboard.writeText(copyText).then(() => {
+                alert('结果已复制到剪贴板！');
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = copyText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('结果已复制到剪贴板！');
+            });
+        };
+
+        // 打印明细单功能
+        window.printDetail = function() {
+            window.print();
+        };
+
+        // PDF功能（按需加载）
+        window.downloadPDF = async function() {
+            if (typeof html2canvas === 'undefined' || typeof jspdf === 'undefined') {
+                try {
+                    await Promise.all([
+                        loadScript('https://cdn.bootcdn.net/ajax/libs/html2canvas/1.4.1/html2canvas.min.js'),
+                        loadScript('https://cdn.bootcdn.net/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js')
+                    ]);
+                } catch (err) {
+                    alert('PDF依赖加载失败，请重试！');
+                    return;
+                }
+            }
+            const { jsPDF } = window.jspdf;
+            const printArea = document.getElementById('printArea');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            html2canvas(printArea, {
+                scale: 2, useCORS: true, backgroundColor: '#ffffff'
+            }).then(canvas => {
+                const imgWidth = 210;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
+                pdf.save(`离职赔偿金明细单_${new Date().toLocaleDateString()}.pdf`);
+            });
+        };
+
+        // 动态加载JS工具函数
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.body.appendChild(script);
+            });
+        }
+
+        // 分享页面功能
+        window.sharePage = function() {
+            const url = window.location.href;
+            const title = document.title;
+            if (navigator.share) {
+                navigator.share({ title, url }).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('链接已复制到剪贴板！');
+                }).catch(() => alert('复制失败，请手动复制链接'));
+            }
+        };
+
+        // 页面加载完成事件
+        document.addEventListener('DOMContentLoaded', function() {
+            // 优先执行核心功能
+            initDateSelect();
+            calcWorkYears();
+            calcCompensate();
+
+            // 延后执行非核心功能
+            setTimeout(() => {
+                // 工具卡片跳转
+                const toolCards = document.querySelectorAll('.tool-card');
+                toolCards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        const href = this.getAttribute('data-href');
+                        if (href) window.location.href = href;
+                    });
+                    card.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            const href = card.getAttribute('data-href');
+                            if (href) window.location.href = href;
+                        }
+                    });
+                });
+
+                const navToggleBtn = document.getElementById('navToggleBtn');
+                const navMenu = document.getElementById('navMenu');
+                if (navToggleBtn && navMenu) {
+                    navToggleBtn.addEventListener('click', function() {
+                        const isActive = navToggleBtn.classList.toggle('active');
+                        navMenu.classList.toggle('show');
+                        navToggleBtn.setAttribute('aria-expanded', isActive);
+                        navMenu.setAttribute('aria-hidden', !isActive);
+                    });
+                    const navLinks = navMenu.querySelectorAll('.nav-link');
+                    navLinks.forEach(link => {
+                        link.addEventListener('click', () => {
+                            navToggleBtn.classList.remove('active');
+                            navMenu.classList.remove('show');
+                            navToggleBtn.setAttribute('aria-expanded', 'false');
+                            navMenu.setAttribute('aria-hidden', 'true');
+                        });
+                    });
+                    document.addEventListener('click', (e) => {
+                        if (!navToggleBtn.contains(e.target) && !navMenu.contains(e.target)) {
+                            navToggleBtn.classList.remove('active');
+                            navMenu.classList.remove('show');
+                            navToggleBtn.setAttribute('aria-expanded', 'false');
+                            navMenu.setAttribute('aria-hidden', 'true');
+                        }
+                    });
+                }
+
+                // Cookie弹窗
+                const cookiePopup = document.getElementById('cookiePopup');
+                const acceptBtn = document.getElementById('acceptCookies');
+                const rejectBtn = document.getElementById('rejectCookies');
+                
+                if (!localStorage.getItem('cookieConsent')) {
+                    setTimeout(() => { 
+                        cookiePopup.style.display = 'flex';
+                        setTimeout(() => cookiePopup.classList.add('show'), 10);
+                    }, 1500);
+                }
+                
+                function hideCookiePopup(consent) {
+                    localStorage.setItem('cookieConsent', consent);
+                    cookiePopup.classList.remove('show');
+                    setTimeout(() => cookiePopup.style.display = 'none', 300);
+                }
+                
+                acceptBtn?.addEventListener('click', () => hideCookiePopup('accepted'));
+                rejectBtn?.addEventListener('click', () => hideCookiePopup('rejected'));
+                
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && cookiePopup?.classList.contains('show')) hideCookiePopup('rejected');
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

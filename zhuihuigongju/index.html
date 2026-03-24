@@ -1,0 +1,455 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026税后工资计算器_个税计算_加班费核算_离职赔偿_年终奖计税_延迟退休在线工具合集 - 智汇工薪助手</title>
+    <meta name="description" content="2026年免费工薪族专属工具合集，提供税后工资计算、个税核算、加班费计算、年终奖个税对比、离职赔偿金测算、延迟退休预估等实用工具，严格遵循国家最新政策开发，精准合规，一键出结果。">
+    <meta name="keywords" content="税后工资计算器,2026个税计算器,五险一金计算,专项附加扣除,加班费计算器,离职赔偿金计算,年终奖个税计算,延迟退休测算,中文金额大写转换">
+    <meta name="author" content="智汇工薪助手">
+    <link rel="canonical" href="https://lixijsq.com/">
+    <meta property="og:site_name" content="智汇工薪助手">
+    <meta property="og:title" content="2026税后工资计算器_个税计算_加班费核算在线工具合集 - 智汇工薪助手">
+    <meta property="og:description" content="2026年免费工薪族专属免费计算工具平台，覆盖税后工资、个税、加班费、年终奖、离职赔偿等全场景，严格遵循国家政策开发，精准合规一键计算">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lixijsq.com/">
+    <meta property="og:image" content="https://lixijsq.com/images/home-og-cover.jpg">
+    <meta property="og:locale" content="zh_CN">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <meta name="application-name" content="智汇工薪助手">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="/css/global.css">
+    <!-- 网站基础结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "智汇工薪助手",
+        "url": "https://lixijsq.com/",
+        "description": "2026年工薪族专属免费计算工具平台，覆盖税后工资、个税、加班费、离职赔偿、延迟退休等全职场场景",
+        "publisher": {
+            "@type": "Organization",
+            "name": "智汇工薪助手",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://lixijsq.com/images/logo.jpg"
+            }
+        }
+    }
+    </script>
+    <!-- FAQ富片段结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "2026年个税起征点有调整吗？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "2026年工资薪金个税起征点依然为5000元/月（年度60000元），暂无调整。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "五险一金的个人缴纳部分需要缴纳个税吗？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "不需要。五险一金个人缴纳部分属于税前扣除项，不计入应纳税所得额，无需缴纳个人所得税。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "试用期工资需要缴纳个税吗？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "需要。试用期工资属于工资薪金所得，同样适用个税累计预扣法，扣除5000元起征点、五险一金和专项附加扣除后，超过部分需要缴纳个税。"
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+<nav role="navigation" aria-label="主导航">
+    <div class="nav-container">
+        <a href="/" class="logo" title="智汇工薪助手首页">
+            <svg class="icon icon-white" viewBox="0 0 24 24">
+                <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+            </svg>
+            智汇工薪助手
+        </a>
+        <div class="nav-toggle-wrapper">
+            <button class="nav-toggle-btn" id="navToggleBtn" aria-label="所有工具" aria-expanded="false" aria-controls="navMenu">
+                <span>所有工具</span>
+                <svg class="icon" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </button>
+            <div class="nav-menu" id="navMenu" aria-hidden="true">
+                <a href="/tools/after-tax-salary-calculator/index.html" class="nav-link">税后工资计算器</a>
+                <a href="/tools/overtime-pay-calculator/index.html" class="nav-link">加班费计算器</a>
+                <a href="/tools/leave-deduction-calculator/index.html" class="nav-link">请假扣款计算器</a>
+                <a href="/tools/year-end-bonus-tax-calculator/index.html" class="nav-link">年终奖个税计算器</a>
+                <a href="/tools/severance-pay-calculator/index.html" class="nav-link">离职赔偿金计算器</a>
+                <a href="/tools/retirement-delay-calculator/index.html" class="nav-link">延迟退休测算器</a>
+                <a href="/tools/chinese-amount-converter/index.html" class="nav-link">金额大写转换器</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<main class="container">
+    <!-- 【优化】首屏头部区域，标题断句优化，按钮居中对齐 -->
+    <header>
+        <h1>2026税后工资计算器-个税计算<br>工薪族一站式财务办公工具合集</h1>
+        <p class="page-desc">精准合规、免费好用，覆盖工资核算、个税计算、考勤管理、职场权益、退休规划全场景</p>
+        <!-- 按钮居中容器 -->
+        <div class="jump-btn-wrapper">
+            <a href="#core-tools-heading" class="jump-to-tools">立即计算</a>
+        </div>
+    </header>
+
+    <!-- 【核心优化】首屏直接展示核心工具卡片，用户进来就能看到 -->
+    <section class="tools-nav" aria-labelledby="core-tools-heading" id="core-tools-heading">
+        <h2 id="core-tools-heading">
+            <svg class="icon icon-primary" viewBox="0 0 24 24">
+                <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+            </svg>
+            全部核心工具（一键直达）
+        </h2>
+        <div class="tools-grid">
+            <article class="tool-card highlight" data-href="/tools/after-tax-salary-calculator/index.html" tabindex="0" role="link" aria-label="税后工资计算器">
+                <h3>税后工资计算器</h3>
+                <p>2026最新个税规则，支持五险一金、专项附加扣除一键计算，精准算出税后到手工资，附带完整个税明细，工薪族每月发薪必备工具。</p>
+                <div class="tool-card-footer">
+                    <a href="/tools/after-tax-salary-calculator/index.html" class="tool-inner-link">了解计算规则</a>
+                </div>
+            </article>
+            <article class="tool-card" data-href="/tools/overtime-pay-calculator/index.html" tabindex="0" role="link" aria-label="加班费计算器">
+                <h3>加班费计算器</h3>
+                <p>严格遵循劳动法标准，支持工作日延时、周末双休、法定节假日三倍工资一键计算，精准核算加班报酬，维护职场权益。</p>
+                <div class="tool-card-footer">
+                    <a href="/tools/overtime-pay-calculator/index.html" class="tool-inner-link">查看法定标准</a>
+                </div>
+            </article>
+            <article class="tool-card" data-href="/tools/leave-deduction-calculator/index.html" tabindex="0" role="link" aria-label="请假扣款计算器">
+                <h3>请假扣款计算器</h3>
+                <p>支持事假、病假工资一键核算，符合医疗期病假工资标准，精准算出请假扣款金额及当月应发工资，避免薪资核算出错。</p>
+                <div class="tool-card-footer">
+                    <a href="/tools/leave-deduction-calculator/index.html" class="tool-inner-link">查看病假标准</a>
+                </div>
+            </article>
+            <article class="tool-card" data-href="/tools/year-end-bonus-tax-calculator/index.html" tabindex="0" role="link" aria-label="年终奖个税对比计算器">
+                <h3>年终奖个税对比计算器</h3>
+                <p>支持单独计税、合并计税一键对比，自动算出最优省税方案，符合2026最新年终奖个税优惠政策，精准测算到手金额。</p>
+                <div class="tool-card-footer">
+                    <a href="/tools/year-end-bonus-tax-calculator/index.html" class="tool-inner-link">查看避坑指南</a>
+                </div>
+            </article>
+            <article class="tool-card" data-href="/tools/severance-pay-calculator/index.html" tabindex="0" role="link" aria-label="离职经济赔偿金计算器">
+                <h3>离职经济赔偿金计算器</h3>
+                <p>严格遵循劳动合同法，支持一键计算被辞退赔偿金额，支持N/N+1/2N三种赔偿类型，自动计算工作年限、个税免税额度。</p>
+                <div class="tool-card-footer">
+                    <a href="/tools/severance-pay-calculator/index.html" class="tool-inner-link">查看赔偿标准</a>
+                </div>
+            </article>
+            <article class="tool-card" data-href="/tools/retirement-delay-calculator/index.html" tabindex="0" role="link" aria-label="延迟退休计算器">
+                <h3>延迟退休计算器</h3>
+                <p>2026渐进式延迟退休政策精准测算，支持出生年月输入，精确到月份预测退休时间，附带1980-2000年出生人群对照表。</p>
+                <div class="tool-card-footer">
+                    <a href="/tools/retirement-delay-calculator/index.html" class="tool-inner-link">查看延迟退休规则</a>
+                </div>
+            </article>
+            <article class="tool-card" data-href="/tools/chinese-amount-converter/index.html" tabindex="0" role="link" aria-label="中文大写金额转换工具">
+                <h3>中文大写金额转换工具</h3>
+                <p>符合财务、银行标准的中文大写金额转换，支持一键复制，适配报销单、支票、合同等场景，避免金额填写错误。</p>
+                <div class="tool-card-footer">
+                    <a href="/tools/chinese-amount-converter/index.html" class="tool-inner-link">查看填写规范</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 【优化】平台简介等辅助内容，放到工具后面 -->
+    <section class="card" aria-labelledby="intro-heading">
+        <h2 id="intro-heading" class="about-title">平台简介</h2>
+        <p>对于工薪族来说，工资核算是每月的高频需求，但复杂的个税规则、五险一金扣除比例、专项附加扣除政策，往往让很多人算不清自己的实际收入。我们的工具平台严格遵循《中华人民共和国个人所得税法》《劳动合同法》《社会保险法》等法律法规开发，确保计算结果精准合规。</p>
+        <p>截至2026年，我们已上线覆盖职场全生命周期的7款核心免费工具，从入职后的加班费核算、请假扣款计算，到每月发薪的税后工资核算、个税申报，年底的年终奖个税优化，离职时的经济赔偿金测算，再到退休前的延迟退休预估，一站式解决工薪族所有职场财务相关的计算需求。</p>
+    </section>
+
+    <section class="tools-nav" aria-labelledby="articles-heading">
+        <h2 id="articles-heading">
+            <svg class="icon icon-primary" viewBox="0 0 24 24">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            职场干货与政策指南
+        </h2>
+        <article>
+            <a href="/tools/after-tax-salary-calculator/article-after-tax-salary-calculator.html" class="article-card">
+                <h3>2026税后工资计算规则详解：个税扣除+五险一金全指南</h3>
+                <p>详解税前税后工资区别，拆解五险一金扣除规则、个税累计预扣法，附完整计算案例。</p>
+            </a>
+        </article>
+        <article>
+            <a href="/tools/after-tax-salary-calculator/article-tax-1.html" class="article-card">
+                <h3>2026专项附加扣除申报全攻略：如何多拿回3000元？</h3>
+                <p>7项扣除标准全解，填报条件、操作步骤、常见避坑点，手把手教你最大化减税红利。</p>
+            </a>
+        </article>
+        <article>
+            <a href="/tools/after-tax-salary-calculator/article-tax-2.html" class="article-card">
+                <h3>个税累计预扣法：为什么下半年扣税变多了？2026年实操解读</h3>
+                <p>拆解累计预扣法计算逻辑，详解月度个税波动原因，附完整计算案例与避坑指南。</p>
+            </a>
+        </article>
+        <article>
+            <a href="/tools/year-end-bonus-tax-calculator/article-year-end-bonus-avoidance.html" class="article-card">
+                <h3>年终奖怎么发最省税？2026两种计税方式避坑指南</h3>
+                <p>单独计税vs合并计税怎么选？临界点避坑，手把手教你算出最优省税方案。</p>
+            </a>
+        </article>
+        <article>
+            <a href="/tools/overtime-pay-calculator/jiabanfei-jisuan-xiangjie.html" class="article-card">
+                <h3>加班费怎么算才合法？劳动法标准计算规则全解读</h3>
+                <p>工作日/周末/法定节假日加班费计算标准，附完整计算案例与维权指南。</p>
+            </a>
+        </article>
+        <article>
+            <a href="/tools/leave-deduction-calculator/article-leave-deduction-calculator-2.html" class="article-card">
+                <h3>2026医疗期规定：病假工资发放最低标准与计算方法</h3>
+                <p>全国病假工资计算规则，医疗期期限规定，违法扣薪避坑与维权指南。</p>
+            </a>
+        </article>
+        <div id="moreArticles" class="article-hidden" aria-hidden="true">
+            <article>
+                <a href="/tools/chinese-amount-converter/article-chinese-amount-converter-1.html" class="article-card">
+                    <h3>为什么支票必须大写？解析财务防篡改的历史与2026年新规</h3>
+                    <p>中文金额大写的起源与发展，财务填写规范，支票、合同填写的核心禁忌。</p>
+                </a>
+            </article>
+            <article>
+                <a href="/tools/chinese-amount-converter/article-chinese-amount-converter-2.html" class="article-card">
+                    <h3>2026年最新报销规范：大写金额书写的细微禁忌（附易错案例）</h3>
+                    <p>财务报销大写金额标准写法，常见错误案例，避免报销被驳回的核心要点。</p>
+                </a>
+            </article>
+            <article>
+                <a href="/tools/leave-deduction-calculator/article-leave-deduction-calculator-1.html" class="article-card">
+                    <h3>考勤扣薪避坑指南：这些扣工资行为是违法的！</h3>
+                    <p>详解合法扣薪与违法扣薪的边界，迟到、早退、旷工扣薪的法律红线，维权步骤。</p>
+                </a>
+            </article>
+            <article>
+                <a href="/tools/retirement-delay-calculator/article-retirement-delay-calculator-2.html" class="article-card">
+                    <h3>深度解析：延迟退休"每3个月延迟1个月"的阶梯规律</h3>
+                    <p>渐进式延迟退休计算规则，1970-2000年出生人群退休时间对照表，提前规划指南。</p>
+                </a>
+            </article>
+            <article>
+                <a href="/tools/retirement-delay-calculator/article-retirement-delay-calculator-1.html" class="article-card">
+                    <h3>延迟退休后，如何做好职业规划与养老储备？全攻略</h3>
+                    <p>不同年龄段职业规划建议，养老储备方案，社保缴纳的核心要点，提前锁定养老权益。</p>
+                </a>
+            </article>
+        </div>
+        <button class="toggle-btn" id="toggleBtn" aria-expanded="false" aria-controls="moreArticles">
+            <span>查看更多文章</span>
+            <span aria-hidden="true">↓</span>
+        </button>
+    </section>
+
+    <section class="card" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" class="about-title">常见问题解答</h2>
+        <div class="faq-item">
+            <h3>2026年个税起征点有调整吗？</h3>
+            <p>2026年工资薪金个税起征点依然为5000元/月（年度60000元），暂无调整。</p>
+        </div>
+        <div class="faq-item">
+            <h3>五险一金的个人缴纳部分需要缴纳个税吗？</h3>
+            <p>不需要。五险一金个人缴纳部分属于税前扣除项，不计入应纳税所得额，无需缴纳个人所得税。</p>
+        </div>
+        <div class="faq-item">
+            <h3>试用期工资需要缴纳个税吗？</h3>
+            <p>需要。试用期工资属于工资薪金所得，同样适用个税累计预扣法，扣除5000元起征点、五险一金和专项附加扣除后，超过部分需要缴纳个税。</p>
+        </div>
+    </section>
+
+    <section class="card" aria-labelledby="about-heading">
+        <h2 id="about-heading" class="about-title">关于智汇工薪助手</h2>
+        <p>智汇工薪助手是专为国内工薪族、职场人打造的免费、精准、合规的一站式职场财务工具平台。我们深耕职场财务、劳动权益、个税规划相关领域，致力于用简单易用的工具，解决每一位职场人在发薪算薪、个税申报、加班维权、离职补偿、退休规划等高频场景的计算难题。</p>
+        <p>所有工具均严格遵循《中华人民共和国个人所得税法》《中华人民共和国劳动合同法》《社会保险法》等国家现行法律法规开发，确保计算结果精准合规，可直接用于日常核算、参考申报，无需注册登录，打开即可免费使用。</p>
+    </section>
+
+    <section class="card" aria-labelledby="advantages-heading">
+        <h2 id="advantages-heading" class="about-title">我们的工具优势</h2>
+        <ul class="advantage-list">
+            <li><strong>精准合规：</strong>所有工具同步国家最新政策更新，严格遵循官方规则开发，计算结果精准可靠，完全符合财务、税务、劳动法规标准。</li>
+            <li><strong>免费普惠：</strong>所有核心工具完全免费，无任何隐藏收费，无需注册登录，打开即可使用，无任何使用门槛。</li>
+            <li><strong>简单易用：</strong>摒弃复杂的专业术语，用极简的操作流程，让每一位用户都能一键算出结果，无需手动记忆复杂的计算公式。</li>
+            <li><strong>场景全覆盖：</strong>覆盖工薪族从入职、发薪、年终、离职、退休全职场生命周期的计算需求，一站式解决所有职场财务相关问题。</li>
+            <li><strong>全终端适配：</strong>所有工具完美适配手机、平板、电脑等全终端，随时随地都能快速计算，满足职场人随时核算的需求。</li>
+        </ul>
+    </section>
+</main>
+
+<footer class="footer-links" role="contentinfo">
+    <nav aria-label="页脚导航">
+        <a href="/about.html">关于我们</a> |
+        <a href="/contact.html">联系反馈</a> |
+        <a href="/privacy.html">隐私政策</a> |
+        <a href="/disclaimer.html">免责声明</a>
+    </nav>
+    <p>© 2026 智汇工薪助手 lixijsq.com 版权所有 | 所有工具均严格遵循国家相关法律法规开发</p>
+</footer>
+
+<div id="cookiePopup" class="cookie-popup" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
+    <div class="cookie-content">
+        <h3 id="cookie-title">
+            <svg class="icon icon-primary" viewBox="0 0 24 24">
+                <path d="M12 2a10 10 0 1 0 10 10A4 4 0 0 1 12 12V2Z"></path>
+                <path d="M12 16h.01"></path>
+                <path d="M8 12h.01"></path>
+                <path d="M16 12h.01"></path>
+                <path d="M12 8h.01"></path>
+            </svg>
+            Cookie 提示
+        </h3>
+        <p id="cookie-desc">我们使用Cookie来提升您的浏览体验和分析网站流量，相关数据仅用于优化网站功能。您可以选择接受或拒绝，详细内容请查看我们的<a href="/privacy.html">隐私政策</a>。</p>
+    </div>
+    <div class="cookie-buttons">
+        <button id="rejectCookies" class="btn btn-outline">拒绝</button>
+        <button id="acceptCookies" class="btn btn-primary">接受</button>
+    </div>
+</div>
+
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 工具卡片跳转逻辑（事件委托，优化性能）
+        const toolsGrid = document.querySelector('.tools-grid');
+        if (toolsGrid) {
+            toolsGrid.addEventListener('click', function(e) {
+                // 点击内部链接不触发卡片跳转
+                if (e.target.closest('.tool-inner-link')) return;
+                const toolCard = e.target.closest('.tool-card');
+                if (toolCard) {
+                    const href = toolCard.getAttribute('data-href');
+                    if (href) window.location.href = href;
+                }
+            });
+            // 键盘操作支持
+            toolsGrid.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    if (e.target.closest('.tool-inner-link')) return;
+                    const toolCard = e.target.closest('.tool-card');
+                    if (toolCard) {
+                        e.preventDefault();
+                        const href = toolCard.getAttribute('data-href');
+                        if (href) window.location.href = href;
+                    }
+                }
+            });
+        }
+
+        // 文章展开收起逻辑
+        const toggleBtn = document.getElementById('toggleBtn');
+        const moreArticles = document.getElementById('moreArticles');
+        if (toggleBtn && moreArticles) {
+            let isExpanded = false;
+            toggleBtn.addEventListener('click', function() {
+                isExpanded = !isExpanded;
+                if (isExpanded) {
+                    moreArticles.classList.add('show');
+                    moreArticles.setAttribute('aria-hidden', 'false');
+                    toggleBtn.setAttribute('aria-expanded', 'true');
+                    toggleBtn.querySelector('span:first-child').textContent = '收起更多文章';
+                    toggleBtn.querySelector('span:last-child').textContent = '↑';
+                } else {
+                    moreArticles.classList.remove('show');
+                    moreArticles.setAttribute('aria-hidden', 'true');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                    toggleBtn.querySelector('span:first-child').textContent = '查看更多文章';
+                    toggleBtn.querySelector('span:last-child').textContent = '↓';
+                }
+            });
+        }
+
+        // 导航菜单展开收起逻辑
+        const navToggleBtn = document.getElementById('navToggleBtn');
+        const navMenu = document.getElementById('navMenu');
+        if (navToggleBtn && navMenu) {
+            navToggleBtn.addEventListener('click', function() {
+                const isActive = navToggleBtn.classList.toggle('active');
+                navMenu.classList.toggle('show');
+                navToggleBtn.setAttribute('aria-expanded', isActive);
+                navMenu.setAttribute('aria-hidden', !isActive);
+            });
+            // 点击导航链接后自动收起菜单
+            const navLinks = navMenu.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navToggleBtn.classList.remove('active');
+                    navMenu.classList.remove('show');
+                    navToggleBtn.setAttribute('aria-expanded', 'false');
+                    navMenu.setAttribute('aria-hidden', 'true');
+                });
+            });
+            // 点击页面其他区域收起菜单
+            document.addEventListener('click', (e) => {
+                if (!navToggleBtn.contains(e.target) && !navMenu.contains(e.target)) {
+                    navToggleBtn.classList.remove('active');
+                    navMenu.classList.remove('show');
+                    navToggleBtn.setAttribute('aria-expanded', 'false');
+                    navMenu.setAttribute('aria-hidden', 'true');
+                }
+            });
+        }
+
+        // Cookie合规逻辑
+        const cookiePopup = document.getElementById('cookiePopup');
+        const acceptBtn = document.getElementById('acceptCookies');
+        const rejectBtn = document.getElementById('rejectCookies');
+        // 第三方脚本加载函数
+        function loadThirdPartyScripts() {
+            console.log('第三方脚本已加载（用户已同意Cookie）');
+            // 在此处添加Google Analytics、Google Ads等代码
+        }
+
+        if (cookiePopup && acceptBtn && rejectBtn) {
+            const cookieConsent = localStorage.getItem('cookieConsent');
+            // 已同意Cookie，直接加载第三方脚本
+            if (cookieConsent === 'accepted') {
+                loadThirdPartyScripts();
+            }
+            // 未选择，显示弹窗
+            else if (!cookieConsent) {
+                setTimeout(() => { 
+                    cookiePopup.classList.add('show'); 
+                    acceptBtn.focus(); 
+                }, 1500);
+            }
+
+            function hideCookiePopup(consent) {
+                localStorage.setItem('cookieConsent', consent);
+                cookiePopup.classList.remove('show');
+                if (consent === 'accepted') {
+                    loadThirdPartyScripts();
+                }
+            }
+
+            acceptBtn.addEventListener('click', () => hideCookiePopup('accepted'));
+            rejectBtn.addEventListener('click', () => hideCookiePopup('rejected'));
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && cookiePopup.classList.contains('show')) {
+                    hideCookiePopup('rejected');
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
