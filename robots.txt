@@ -1,0 +1,12 @@
+# Allow all search engines (Google, Bing, Baidu, etc.)
+User-agent: *
+# Allow crawling all pages (core rule, do not modify/delete)
+Allow: /
+
+# Disallow pages with no SEO value (delete if no corresponding pages)
+Disallow: /admin/
+Disallow: /test/
+Disallow: /draft/
+
+# Point to your sitemap to help search engines find new pages quickly
+Sitemap: https://lixijsq.com/sitemap.xml
